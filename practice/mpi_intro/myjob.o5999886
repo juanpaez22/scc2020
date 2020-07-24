@@ -1,0 +1,43 @@
+
+Currently Loaded Modules:
+  1) intel/18.0.2      4) git/2.24.1       7) cmake/3.16.1
+  2) libfabric/1.7.0   5) autotools/1.1    8) xalt/2.8
+  3) impi/18.0.2       6) python2/2.7.15   9) TACC
+
+ 
+
+TACC:  Starting up job 5999886 
+TACC:  Starting parallel tasks... 
+
+Rank: 0, sum: 195625, sumTotal: 50005000, start: 1, end: 625
+
+Rank: 1, sum: 586250, sumTotal: 0, start: 626, end: 1250
+
+Rank: 8, sum: 3320625, sumTotal: 0, start: 5001, end: 5625
+
+Rank: 2, sum: 976875, sumTotal: 0, start: 1251, end: 1875
+
+Rank: 9, sum: 3711250, sumTotal: 0, start: 5626, end: 6250
+
+Rank: 3, sum: 1367500, sumTotal: 0, start: 1876, end: 2500
+
+Rank: 10, sum: 4101875, sumTotal: 0, start: 6251, end: 6875
+
+Rank: 4, sum: 1758125, sumTotal: 0, start: 2501, end: 3125
+
+Rank: 11, sum: 4492500, sumTotal: 0, start: 6876, end: 7500
+
+Rank: 5, sum: 2148750, sumTotal: 0, start: 3126, end: 3750
+
+Rank: 12, sum: 4883125, sumTotal: 0, start: 7501, end: 8125
+
+Rank: 6, sum: 2539375, sumTotal: 0, start: 3751, end: 4375
+
+Rank: 13, sum: 5273750, sumTotal: 0, start: 8126, end: 8750
+
+Rank: 7, sum: 2930000, sumTotal: 0, start: 4376, end: 5000
+
+Rank: 14, sum: 5664375, sumTotal: 0, start: 8751, end: 9375
+
+Rank: 15, sum: 6055000, sumTotal: 0, start: 9376, end: 10000
+TACC:  Shutdown complete. Exiting. 

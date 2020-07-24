@@ -1,0 +1,16 @@
+ calc. pi:  3.1415926535898393  Error:  0.0000000000000462    1.223011017(sec)
+ calc. pi:  3.1415926535897589  Error: -0.0000000000000342    0.001306057(sec)
+TACC:  Starting up job 6000100 
+TACC:  Starting parallel tasks... 
+ calc. pi:  3.1415926535897816  Error: -0.0000000000000115 
+ int(avg):   0.076666325 
+ red(avg):   0.000811622 
+ Total:      0.077477947
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 6000100 
+TACC:  Starting parallel tasks... 
+ calc. pi:  3.1415926535898153  Error:  0.0000000000000222 
+ int(avg):   0.000079766 
+ red(avg):   0.000036582 
+ Total:      0.000116348
+TACC:  Shutdown complete. Exiting. 

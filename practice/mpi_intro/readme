@@ -1,0 +1,20 @@
+#Joe Garcia 2020-14-04
+
+The material here is for a basic introduction to mpi.
+There is the current directory you're in and a "solution" directory. 
+The current directory has a basic hello world mpi program along with a summation program demonstrating the MPI_Reduce call.
+-Inspect the source files and compile the code you can run it with mpi. 
+The solution directory has the correct mpi calls for pi.c and ppi.c.
+-Inspect those two source files in the solution folder and compile so you can run them.
+There is also a job script in the solution folder which you can use if you want to submit the job through sbatch.  
+
+*Suggestion(s)
+1. The myJob.sh sbatch script won't work for you initially. I left it as is from when I was testing things. You will need to change some of the sbatch directives. Review the stampede2 user guide for info on submitting jobs with an sbatch script.
+2. It's always a good idea to have a second window open so you can view what your job is doing. Instead of always having to create a new ssh session you can use something like tmux or screen to open new windows and maintain persistant ssh connections. 
+3. You can change the value of the variable "n" in pi.c and ppi.c to reflect M (10^6) and G (10^9).  
+
+*Note(s)
+1. You can use whatever compiler you want to compile the programs. However, there are only two available on stampede2. 
+2. When compiling an mpi program be sure to use the appropiate compiler wrapper.
+3. When launching mpi programs you'll need to use an mpi launcher. Hint: ibrun is what we use at tacc
+4. Don't get too bogged down on the code. Remember this is not a coding competition. Focsus on learning how to run programs on HPC machines and understand the hardware, software, and architecture.  

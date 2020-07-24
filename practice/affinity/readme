@@ -1,0 +1,20 @@
+#Joe Garcia 2020-14-04
+
+This affinity directory is meant to get familiar with processor affinity aka CPU pinning.
+The examples here utilize the amask tool which was developed by someone here at tacc. 
+You can check out the github page here: https://github.com/TACC/amask
+
+In order to understand better how your threads/processes (procs) will run you run the amask executable before an application. 
+For these examples you are simply setting the affinity and running amask to view how threads/procs are placed on a node. 
+You can experiment with the knl and skx nodes to see the differences in two architectures. 
+Try examples 1-2. 
+Also don't forget to load the amask module! (You do not have to build the executable, we provide it for users as a module)
+
+*Suggestion(s)
+1. Use another tool to verify what amask shows you. There exists top, htop, and core_usage which is tacc specific and incredibly useful in my opinion. 
+2. Have a second window open and ssh into the compute node you got from the idev jobs. Use that second window to look at how the procsses are pinned. 
+
+
+*Note(s)
+1. The core_usage command displays the number of cores on a node and their associated utilization. You'll see different numbers for skx and knl (why). There are also "Tn" columns where "n" is an integer. These are considered tiles and correspond to hardware threads associated with a core. 
+

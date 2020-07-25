@@ -1,0 +1,321 @@
+/scratch/03930/jag7548/workspace/scc2020/hpl/example
+Thu Jul 16 15:25:49 CDT 2020
+TACC:  Starting up job 6066134 
+TACC:  Starting parallel tasks... 
+This is a SAMPLE run script.  Change it to reflect the correct number
+of CPUs/threads, number of nodes, MPI processes per node, etc..
+This run was done on: This is a SAMPLE run script.  Change it to reflect the correct number
+of CPUs/threads, number of nodes, MPI processes per node, etc..
+This run was done on: Thu Jul 16 15:25:50 CDT 2020
+Thu Jul 16 15:25:50 CDT 2020
+TACC:  Starting up job 6066134 
+TACC:  Starting up job 6066134 
+TACC:  Starting parallel tasks... 
+TACC:  Starting parallel tasks... 
+RANK=1, NODE=1
+RANK=0, NODE=0
+RANK=0, NODE=0
+RANK=1, NODE=1
+This is a SAMPLE run script.  Change it to reflect the correct number
+of CPUs/threads, number of nodes, MPI processes per node, etc..
+This run was done on: This is a SAMPLE run script.  Change it to reflect the correct number
+of CPUs/threads, number of nodes, MPI processes per node, etc..
+This run was done on: Thu Jul 16 15:25:50 CDT 2020
+Thu Jul 16 15:25:50 CDT 2020
+TACC:  Starting up job 6066134 
+TACC:  Starting up job 6066134 
+RANK=3, NODE=1
+RANK=2, NODE=0
+RANK=2, NODE=0
+RANK=3, NODE=1
+TACC:  Starting parallel tasks... 
+TACC:  Starting parallel tasks... 
+RANK=2, NODE=0
+RANK=3, NODE=1
+RANK=2, NODE=0
+RANK=3, NODE=1
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N        :    1000 
+NB       :     192 
+PMAP     : Column-major process mapping
+P        :       1 
+Q        :       1 
+PFACT    :   Right 
+NBMIN    :       2 
+NDIV     :       2 
+RFACT    :   Crout 
+BCAST    :   1ring 
+DEPTH    :       0 
+SWAP     : Binary-exchange
+L1       : no-transposed form
+U        : no-transposed form
+EQUIL    : no
+ALIGN    :    8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N        :    1000 
+NB       :     192 
+PMAP     : Column-major process mapping
+P        :       1 
+Q        :       1 
+PFACT    :   Right 
+NBMIN    :       2 
+NDIV     :       2 
+RFACT    :   Crout 
+BCAST    :   1ring 
+DEPTH    :       0 
+SWAP     : Binary-exchange
+L1       : no-transposed form
+U        : no-transposed form
+EQUIL    : no
+ALIGN    :    8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+c591-201        : Column=000192 Fraction=0.005 Kernel=    0.00 Mflops=27609.43
+c591-201        : Column=000192 Fraction=0.005 Kernel=    0.00 Mflops=18451.79
+c591-201        : Column=000384 Fraction=0.195 Kernel=20269.41 Mflops=24243.64
+c591-201        : Column=000384 Fraction=0.195 Kernel=20847.63 Mflops=19302.22
+c591-201        : Column=000576 Fraction=0.385 Kernel=12040.28 Mflops=20671.11
+c591-201        : Column=000576 Fraction=0.385 Kernel=12263.55 Mflops=17581.54
+c591-201        : Column=000768 Fraction=0.595 Kernel= 5213.06 Mflops=17350.43
+c591-201        : Column=000768 Fraction=0.595 Kernel= 5391.09 Mflops=15342.35
+c591-201        : Column=000960 Fraction=0.795 Kernel= 1103.84 Mflops=14668.20
+c591-201        : Column=000960 Fraction=0.795 Kernel= 1177.95 Mflops=13348.21
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WC00C2R2        1000   192     1     1               0.05            1.38745e+01
+HPL_pdgesv() start time Thu Jul 16 15:25:51 2020
+
+HPL_pdgesv() end time   Thu Jul 16 15:25:51 2020
+
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WC00C2R2        1000   192     1     1               0.06            1.18956e+01
+HPL_pdgesv() start time Thu Jul 16 15:25:51 2020
+
+HPL_pdgesv() end time   Thu Jul 16 15:25:51 2020
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=        0.0059446 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=        0.0059446 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
+TACC:  Shutdown complete. Exiting. 
+TACC:  Shutdown complete. Exiting. 
+Done: Done: Thu Jul 16 15:25:51 CDT 2020
+Thu Jul 16 15:25:51 CDT 2020
+RANK=0, NODE=0
+RANK=1, NODE=1
+RANK=0, NODE=0
+RANK=1, NODE=1
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N        :    1000 
+NB       :     192 
+PMAP     : Column-major process mapping
+P        :       1 
+Q        :       1 
+PFACT    :   Right 
+NBMIN    :       2 
+NDIV     :       2 
+RFACT    :   Crout 
+BCAST    :   1ring 
+DEPTH    :       0 
+SWAP     : Binary-exchange
+L1       : no-transposed form
+U        : no-transposed form
+EQUIL    : no
+ALIGN    :    8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N        :    1000 
+NB       :     192 
+PMAP     : Column-major process mapping
+P        :       1 
+Q        :       1 
+PFACT    :   Right 
+NBMIN    :       2 
+NDIV     :       2 
+RFACT    :   Crout 
+BCAST    :   1ring 
+DEPTH    :       0 
+SWAP     : Binary-exchange
+L1       : no-transposed form
+U        : no-transposed form
+EQUIL    : no
+ALIGN    :    8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+c591-201        : Column=000192 Fraction=0.005 Kernel=    0.00 Mflops=21650.30
+c591-201        : Column=000192 Fraction=0.005 Kernel=    0.00 Mflops=28747.88
+c591-201        : Column=000384 Fraction=0.195 Kernel=21700.17 Mflops=21669.39
+c591-201        : Column=000384 Fraction=0.195 Kernel=22973.44 Mflops=26221.10
+c591-201        : Column=000576 Fraction=0.385 Kernel=12569.06 Mflops=19288.10
+c591-201        : Column=000576 Fraction=0.385 Kernel=12471.90 Mflops=22071.98
+c591-201        : Column=000768 Fraction=0.595 Kernel= 5628.07 Mflops=16675.74
+c591-201        : Column=000768 Fraction=0.595 Kernel= 5602.06 Mflops=18551.67
+c591-201        : Column=000960 Fraction=0.795 Kernel= 1196.49 Mflops=14366.58
+c591-201        : Column=000960 Fraction=0.795 Kernel= 1212.95 Mflops=15753.84
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WC00C2R2        1000   192     1     1               0.05            1.37133e+01
+HPL_pdgesv() start time Thu Jul 16 15:25:51 2020
+
+HPL_pdgesv() end time   Thu Jul 16 15:25:52 2020
+
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WC00C2R2        1000   192     1     1               0.05            1.36019e+01
+HPL_pdgesv() start time Thu Jul 16 15:25:51 2020
+
+HPL_pdgesv() end time   Thu Jul 16 15:25:52 2020
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=        0.0059446 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=        0.0059446 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
+TACC:  Shutdown complete. Exiting. 
+TACC:  Shutdown complete. Exiting. 
+Done: Done: Thu Jul 16 15:25:52 CDT 2020
+Thu Jul 16 15:25:52 CDT 2020
+TACC:  Shutdown complete. Exiting. 

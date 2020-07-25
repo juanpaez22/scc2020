@@ -1,0 +1,4 @@
+#2020-07-25
+
+I copied over the hpl benchmark directory that is located in /opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/benchmarks/mp_linpack
+This directory has a jobscript and some results from a few runs. The HPL.dat file has been modified. See if you can get a better result ;)

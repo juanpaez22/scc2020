@@ -1,0 +1,153 @@
+/scratch/03930/jag7548/workspace/scc2020/hpl/joe
+Sat Jul 25 11:08:26 CDT 2020
+This is a SAMPLE run script.  Change it to reflect the correct number
+of CPUs/threads, number of nodes, MPI processes per node, etc..
+This run was done on: Sat Jul 25 11:08:26 CDT 2020
+TACC:  Starting up job 6121041 
+TACC:  Starting parallel tasks... 
+RANK=3, NODE=1
+RANK=5, NODE=1
+RANK=1, NODE=1
+RANK=0, NODE=0
+RANK=12, NODE=0
+RANK=4, NODE=0
+RANK=2, NODE=0
+RANK=8, NODE=0
+RANK=7, NODE=1
+RANK=15, NODE=1
+RANK=14, NODE=0
+RANK=13, NODE=1
+RANK=6, NODE=0
+RANK=9, NODE=1
+RANK=11, NODE=1
+RANK=10, NODE=0
+RANK=20, NODE=0
+RANK=18, NODE=0
+RANK=22, NODE=0
+RANK=21, NODE=1
+RANK=19, NODE=1
+RANK=16, NODE=0
+RANK=26, NODE=0
+RANK=28, NODE=0
+RANK=32, NODE=0
+RANK=33, NODE=1
+RANK=24, NODE=0
+RANK=29, NODE=1
+RANK=25, NODE=1
+RANK=31, NODE=1
+RANK=17, NODE=1
+RANK=27, NODE=1
+RANK=38, NODE=0
+RANK=30, NODE=0
+RANK=34, NODE=0
+RANK=23, NODE=1
+RANK=40, NODE=0
+RANK=37, NODE=1
+RANK=46, NODE=0
+RANK=36, NODE=0
+RANK=35, NODE=1
+RANK=39, NODE=1
+RANK=45, NODE=1
+RANK=41, NODE=1
+RANK=43, NODE=1
+RANK=42, NODE=0
+RANK=44, NODE=0
+RANK=47, NODE=1
+RANK=56, NODE=0
+RANK=68, NODE=0
+RANK=70, NODE=0
+RANK=62, NODE=0
+RANK=49, NODE=1
+RANK=59, NODE=1
+RANK=63, NODE=1
+RANK=50, NODE=0
+RANK=54, NODE=0
+RANK=72, NODE=0
+RANK=69, NODE=1
+RANK=53, NODE=1
+RANK=55, NODE=1
+RANK=60, NODE=0
+RANK=51, NODE=1
+RANK=64, NODE=0
+RANK=61, NODE=1
+RANK=67, NODE=1
+RANK=57, NODE=1
+RANK=73, NODE=1
+RANK=48, NODE=0
+RANK=58, NODE=0
+RANK=52, NODE=0
+RANK=65, NODE=1
+RANK=75, NODE=1
+RANK=74, NODE=0
+RANK=76, NODE=0
+RANK=66, NODE=0
+RANK=71, NODE=1
+RANK=78, NODE=0
+RANK=79, NODE=1
+RANK=77, NODE=1
+RANK=80, NODE=0
+RANK=87, NODE=1
+RANK=84, NODE=0
+RANK=88, NODE=0
+RANK=86, NODE=0
+RANK=85, NODE=1
+RANK=92, NODE=0
+RANK=89, NODE=1
+RANK=90, NODE=0
+RANK=93, NODE=1
+RANK=94, NODE=0
+RANK=91, NODE=1
+RANK=82, NODE=0
+RANK=81, NODE=1
+RANK=83, NODE=1
+RANK=95, NODE=1
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N        :  192000 
+NB       :     192 
+PMAP     : Column-major process mapping
+P        :       8 
+Q        :      12 
+PFACT    :   Right 
+NBMIN    :       2 
+NDIV     :       2 
+RFACT    :   Crout 
+BCAST    :   1ring 
+DEPTH    :       0 
+SWAP     : Binary-exchange
+L1       : no-transposed form
+U        : no-transposed form
+EQUIL    : no
+ALIGN    :    8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+c591-503        : Column=001152 Fraction=0.005 Kernel=    2.90 Mflops=3212969.33
+c591-504        : Column=002112 Fraction=0.010 Kernel=3044425.41 Mflops=3210165.10
+c591-503        : Column=003072 Fraction=0.015 Kernel=3014432.44 Mflops=3212762.20
+c591-504        : Column=004032 Fraction=0.020 Kernel=3020547.14 Mflops=3217951.77
+c591-503        : Column=004992 Fraction=0.025 Kernel=2979196.67 Mflops=3214433.73
+c591-503        : Column=005952 Fraction=0.030 Kernel=3020661.73 Mflops=3216612.25
+c591-504        : Column=006912 Fraction=0.035 Kernel=3047175.96 Mflops=3213033.70

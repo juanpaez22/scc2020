@@ -1,5 +1,10 @@
 # GROMACS
 
+## About
+- Molecular dynamics simulation
+- Performance measured in ns / day
+- Input usually consists of protein topology in solvate
+- Algorithm used requries all-to-all processor communication, hinders performance
 
 ## South African Team Notes
 https://www.notion.so/GROMACS-2835ff1b331c4bf1b0585b2832ce9283
@@ -8,6 +13,9 @@ Conclusions:
 - GPU >> CPU (only need 1-4)
 - Best build using Intel 2019 compiler, thread mpi, 1 node, 1 GPU
 - run line with best performance: gmx mdrun -ntmpi 12 -ntomp 1 -s $bench -noconfout -gpu_id 0123   -nb gpu -update gpu  -bonded gpu -pme gpu -npme 1 -nstlist 400 -nsteps 100000
+- no need to edit code
+- see notes for benchmark results and build scripts example
+
 
 
 ## Steps to run Gromacs

@@ -17,8 +17,11 @@ Conclusions:
 - see notes for benchmark results and build scripts example
 
 
-
 ## Steps to run Gromacs
 1. Build gromacs with desired options, compiler, etc. (or use prebuilt on TACC with module load)
 2. Pre-process benchmark input using "grompp" command
 3. Run the application simulation using the "mdrun" command. Performance results will be presented at the end in ns/day.
+
+## Benchmarks
+/work/06280/mcawood/benchmark_repo/1.5M_water.tar.gz
+/work/06280/mcawood/benchmark_repo/adh_cubic.tar.gz

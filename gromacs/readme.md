@@ -4,7 +4,8 @@
 - Molecular dynamics simulation
 - Performance measured in ns / day
 - Input usually consists of protein topology in solvate
-- Algorithm used requries all-to-all processor communication, hinders performance
+- Algorithm used requries all-to-all processor communication, hinders performance (improved by infiniband or omnipath)
+- Rule of thumb for scaling: max 1 CPU per 100 atoms
 
 ## South African Team Notes
 https://www.notion.so/GROMACS-2835ff1b331c4bf1b0585b2832ce9283
@@ -24,4 +25,5 @@ Conclusions:
 
 ## Benchmarks
 /work/06280/mcawood/benchmark_repo/1.5M_water.tar.gz
+
 /work/06280/mcawood/benchmark_repo/adh_cubic.tar.gz

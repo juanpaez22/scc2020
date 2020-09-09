@@ -16,8 +16,8 @@ export BACKBLOCK=128
 export PROJBUFF=8
 export BACKBUFF=8
 #I/O FILES
-export THEFILE=~/MemXCT_datasets/ADS1_theta.bin
-export SINFILE=~/MemXCT_datasets/ADS1_sinogram.bin
+export THEFILE=./datasets/ADS1_theta.bin
+export SINFILE=./datasets/ADS1_sinogram.bin
 export OUTFILE=./recon_ADS1.bin
 
 export OMP_NUM_THREADS=1

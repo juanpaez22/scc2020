@@ -1,0 +1,11 @@
+# Datasets
+datasets/
+
+# Binaries
+src/*.o
+memxct
+
+# Running and verification
+Fiji.app
+/*.bin
+

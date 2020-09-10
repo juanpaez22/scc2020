@@ -15,3 +15,5 @@ both for its knights landing processors and its cascade lake processores.
 8. Enter /scripts and run ./create_newcase where the three parameters are <casename> <compset> and <grid resolution>. The component set is the specific physical components of CESM which will be actively run and will have real data.
 9. cd into the case directory and run ./case.setup
 10. Run ./case.build
+11. Using the xmlchange tool, change the $STOP_OPTION parameter to 'never'. This would look like: ./xmlchange STOP_OPTION=never
+12. run ./case.submit

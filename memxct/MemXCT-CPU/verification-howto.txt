@@ -1,0 +1,21 @@
+--- How to open the .bin files in Fiji ---
+
+- Intro -
+Fiji does not have an extensive CLI, so the only option left is to run the
+executable on the TACC machine (you should probably not run it on a login node
+to be safe). Make sure you have X11 forwarding setup so you can see the
+output, otherwise Fiji will very likely throw an error.
+
+- Running Fiji -
+To run Fiji, simply go to the Fiji.app directory and run the ImageJ-linux64
+executable. Make sure to not put a filename as a command line argument,
+otherwise it will try to recognize the binary as an image formart like .png,
+.bmp, or something else.
+
+- Opening the Image -
+In Fiji, go to the top left corner and select File -> Import -> Raw. There,
+open the .bin file you want to preview. Make the Image type 32-bit Real.
+Set the width and height according to the readme.md file in this directory.
+Next, check the box for Little-endian byte order. Leave all other values at
+their default value and open it. The image should match the images on the
+readme.

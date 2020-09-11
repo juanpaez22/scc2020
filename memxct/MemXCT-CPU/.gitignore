@@ -8,4 +8,4 @@ memxct
 # Running and verification
 Fiji.app
 /*.bin
-
+/run-scripts/o-files

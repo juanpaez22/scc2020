@@ -32,6 +32,7 @@ Conclusions from South African team notes:
 
 ## Tuning Gromacs
 Good video: https://www.youtube.com/watch?v=8d8xfw8BZUc
+Another: https://www.youtube.com/watch?v=iaPZHzd1nzs&ab_channel=BioExcelCenterofExcellenceforComputationalBiomolecularResearch
 - Each system will have its own set of best parameters / architecture. Optimize each system independently.
 - Rule of thumb for scaling: max 1 CPU per 100 atoms
 - Improve performance with infiniband or omnipath
@@ -40,10 +41,13 @@ Good video: https://www.youtube.com/watch?v=8d8xfw8BZUc
 - GPU tied to MPI rank, i.e. there should be as many GPU's as MPI ranks
 - Optimization in practice: start with 1 GPU and (#cores/#gpus in node) cores. Next, increase number of GPU's and cores together. Last, try multiple nodes.
 - ALWAYS use latest GCC/ICC version & MPI library. Can make up to 25% difference (mostly for CPU nodes).
+- Biggest jump in performance/price comes from adding one consumer-class GPU (e.g. GeForce)
+- More GPU's than CPU's sockets yield diminishing returns. Invest on another GPU node over more GPU's to existing nodes.
 
 ## Single node results:
 - 1 CPU / 1 GPU, Gromacs automatic settings give close to optimal performance using thread-MPI (does not include multi-socket CPU nodes)
 - threadMPI usually outperforms OpenMP threads (1-2 OMP threads / MPI thread/rank is best)
+- GPU increases performance (with a little tuning of OMP/MPI, etc.)
 
 
 ## Multi node results:

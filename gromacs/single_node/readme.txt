@@ -5,8 +5,8 @@ Tuning on a single node:
     - run_more_steps.sh: sets more timesteps
     - run_omp.sh: manually set omp threads
 - Baseline performance (all defaults using run_basic.sh):
-    - adh_cubic: 61 ns/day
-    - 1.5M_water: 1.018 ns/day
+    - adh_cubic: 61 ns/day without GPU, 88 ns/day with gpu (see scripts for config)
+    - 1.5M_water: 1.018 ns/day, 1.321 ns/day with gpu
 - Conclusions:
     - Running more steps: negligible (but nonzero) improvement
     - Don't use more threads than cores, regresssion in performance

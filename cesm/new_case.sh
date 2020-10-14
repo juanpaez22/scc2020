@@ -8,6 +8,11 @@ cd CESM_ROOT/cime/scripts/
 
 ./xmlchange JOB_WALLCLOCK_TIME=01:00:00
 
+# Enable the rerun option by changing the resubmit command to the number of resubmits you want
+# This is a very useuful way of breaking up a large job into a series of smaller jobs
+./xmlchange RESUBMIT=10
+./xmlchange 
+
 # change number of tasks, global mpi rank, and threads for each component
 # This run has 8 different components, but not all runs do
 

@@ -17,44 +17,44 @@ cd CESM_ROOT/cime/scripts/
 # This run has 8 different components, but not all runs do
 
 # atmosphere
-./xmlchange NTASKS_ATM=480  
-./xmlchange NTHRDS_ATM=1
+./xmlchange NTASKS_ATM=240  
+./xmlchange NTHRDS_ATM=2
 ./xmlchange ROOTPE_ATM=0
 
 # Ocean
-./xmlchange NTASKS_OCN=144  
-./xmlchange NTHRDS_OCN=1
-./xmlchange ROOTPE_OCN=480
+./xmlchange NTASKS_OCN=48  
+./xmlchange NTHRDS_OCN=2
+./xmlchange ROOTPE_OCN=240
 
 # Land
-./xmlchange NTASKS_LND=480  
-./xmlchange NTHRDS_LND=1
+./xmlchange NTASKS_LND=192  
+./xmlchange NTHRDS_LND=2
 ./xmlchange ROOTPE_LND=0
 
 # Wave
 ./xmlchange NTASKS_WAV=48  
-./xmlchange NTHRDS_WAV=1
-./xmlchange ROOTPE_WAV=0
+./xmlchange NTHRDS_WAV=2
+./xmlchange ROOTPE_WAV=288
 
 # Glacier
-./xmlchange NTASKS_GLC=48  
-./xmlchange NTHRDS_GLC=1
-./xmlchange ROOTPE_GLC=48
+./xmlchange NTASKS_GLC=240  
+./xmlchange NTHRDS_GLC=2
+./xmlchange ROOTPE_GLC=0
 
 # ROF
-./xmlchange NTASKS_ROF=48  
-./xmlchange NTHRDS_ROF=1
-./xmlchange ROOTPE_ROF=96
+./xmlchange NTASKS_ROF=192  
+./xmlchange NTHRDS_ROF=2
+./xmlchange ROOTPE_ROF=0
 
 # Ice
-./xmlchange NTASKS_ICE=96  
-./xmlchange NTHRDS_ICE=1
-./xmlchange ROOTPE_ICE=144
+./xmlchange NTASKS_ICE=48  
+./xmlchange NTHRDS_ICE=2
+./xmlchange ROOTPE_ICE=192
 
 # Coupler
 ./xmlchange NTASKS_CPL=240  
-./xmlchange NTHRDS_CPL=1
-./xmlchange ROOTPE_CPL=240
+./xmlchange NTHRDS_CPL=2
+./xmlchange ROOTPE_CPL=0
 
 
 # Change how the simulated time with two variables:

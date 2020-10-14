@@ -3,7 +3,7 @@
 ## Cluster Configuration File ##
 ################################
 
-[cluster competition-v4]
+[cluster competition-v5]
 FormLayout = selectionpanel
 Category = Applications
 
@@ -20,7 +20,7 @@ Autoscale = $Autoscale
         [[[cluster-init cyclecloud/slurm:default]]]
         Optional = True
         
-        [[[cluster-init competition-v4:default:1.0.0]]]
+        [[[cluster-init competition-v5:default:1.0.0]]]
         Optional = True
 
         [[[configuration]]]
@@ -35,12 +35,35 @@ Autoscale = $Autoscale
 
         [[[cluster-init cyclecloud/slurm:master]]]
 
-        [[[cluster-init competition-v4:master:1.0.0]]]
+        [[[cluster-init competition-v5:master:1.0.0]]]
         Optional = True
 
         [[[network-interface eth0]]]
         AssociatePublicIpAddress = $UsePublicNetwork
 
+    # Add 3 premium disks in a RAID 5 configuration to the NFS export
+    [[[volume nfs-1]]]
+    Size = 1024
+    SSD = true
+    Mount = nfs
+    Persistent = true
+
+    [[[volume nfs-2]]]
+    Size = 1024
+    SSD = true
+    Mount = nfs
+    Persistent = true
+
+    [[[volume nfs-3]]]
+    Size = 1024
+    SSD = true
+    Mount = nfs
+    Persistent = true
+
+[[[configuration cyclecloud.mounts.nfs]]]
+mountpoint = /mnt/exports
+fs_type = ext4
+raid_level = 5
 
     [[nodearray execute]]
     MachineType = $ExecuteMachineType
@@ -58,7 +81,7 @@ Autoscale = $Autoscale
 
         [[[cluster-init cyclecloud/slurm:execute]]]
 
-        [[[cluster-init competition-v4:execute:1.0.0]]]
+        [[[cluster-init competition-v5:execute:1.0.0]]]
         Optional = True
 
 
@@ -69,9 +92,9 @@ Autoscale = $Autoscale
 [parameters About]
 Order = 1
 
-    [[parameters About competition-v4]]
+    [[parameters About competition-v5]]
 
-        [[[parameter competition-v4]]]
+        [[[parameter competition-v5]]]
         HideLabel = true
         Config.Plugin = pico.widget.HtmlTemplateWidget
         Config.Template = '''<p>Insert template description here</p>'''
@@ -147,8 +170,8 @@ Order = 20
         Description = The credentials for the cloud provider
         ParameterType = Cloud.Credentials
 
-    [[parameters competition-v4 Settings ]]
-    Description = "Section for configuring competition-v4"
+    [[parameters competition-v5 Settings ]]
+    Description = "Section for configuring competition-v5"
     Order = 5
 
         

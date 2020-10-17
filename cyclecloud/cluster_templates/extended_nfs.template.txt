@@ -61,13 +61,20 @@ Autoscale = $Autoscale
     Persistent = true
 
 [[[configuration cyclecloud.mounts.nfs]]]
-mountpoint = /mnt/exports
+mountpoint = /scratch
 fs_type = ext4
 raid_level = 5
 
     [[nodearray execute]]
     MachineType = $ExecuteMachineType
     MaxCoreCount = $MaxExecuteCoreCount
+
+
+    [[nodearray intel]]
+    MachineType=H16r_Promo
+
+    [[nodearray gpu]]
+    MachineType=NC12_Promo
 
     Interruptible = $UseLowPrio
     AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs

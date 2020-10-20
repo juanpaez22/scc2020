@@ -3,7 +3,7 @@
 ## Cluster Configuration File ##
 ################################
 
-[cluster competition-v5]
+[cluster comp-v5]
 FormLayout = selectionpanel
 Category = Applications
 
@@ -20,7 +20,7 @@ Autoscale = $Autoscale
         [[[cluster-init cyclecloud/slurm:default]]]
         Optional = True
         
-        [[[cluster-init competition-v5:default:1.0.0]]]
+        [[[cluster-init comp-v5:default:1.0.0]]]
         Optional = True
 
         [[[configuration]]]
@@ -35,7 +35,7 @@ Autoscale = $Autoscale
 
         [[[cluster-init cyclecloud/slurm:master]]]
 
-        [[[cluster-init competition-v5:master:1.0.0]]]
+        [[[cluster-init comp-v5:master:1.0.0]]]
         Optional = True
 
         [[[network-interface eth0]]]
@@ -70,11 +70,15 @@ raid_level = 5
     MaxCoreCount = $MaxExecuteCoreCount
 
 
-    [[nodearray intel]]
-    MachineType=H16r_Promo
+#    [[nodearray intel]]
+#    MachineType=H16r_Promo
 
-    [[nodearray gpu]]
-    MachineType=NC12_Promo
+#    [[nodearray gpu]]
+#    MachineType=NC12_Promo
+
+    [[nodearray development]]
+    MachineType=D16_v3
+
 
     Interruptible = $UseLowPrio
     AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs
@@ -88,7 +92,7 @@ raid_level = 5
 
         [[[cluster-init cyclecloud/slurm:execute]]]
 
-        [[[cluster-init competition-v5:execute:1.0.0]]]
+        [[[cluster-init comp-v5:execute:1.0.0]]]
         Optional = True
 
 
@@ -99,9 +103,9 @@ raid_level = 5
 [parameters About]
 Order = 1
 
-    [[parameters About competition-v5]]
+    [[parameters About comp-v5]]
 
-        [[[parameter competition-v5]]]
+        [[[parameter comp-v5]]]
         HideLabel = true
         Config.Plugin = pico.widget.HtmlTemplateWidget
         Config.Template = '''<p>Insert template description here</p>'''
@@ -177,8 +181,8 @@ Order = 20
         Description = The credentials for the cloud provider
         ParameterType = Cloud.Credentials
 
-    [[parameters competition-v5 Settings ]]
-    Description = "Section for configuring competition-v5"
+    [[parameters comp-v5 Settings ]]
+    Description = "Section for configuring comp-v5"
     Order = 5
 
         

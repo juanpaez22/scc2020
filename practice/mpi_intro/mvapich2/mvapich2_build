@@ -1,0 +1,11 @@
+#!/bin/bash
+
+module load gcc-9.2.0
+gcc --version
+export CC=gcc
+export CXX=g++
+export FC=gfortran 
+
+cd /mnt/exports/shared/home/ccuser/scc2020/practice/mpi_intro/mvapich2/mvapich2-2.3.4/
+./configure --with-device=ch3:sock --prefix=/mnt/exports/shared/home/ccuser/scc2020/practice/mpi_intro/mvapich2
+make -j 4 install |& tee -a mvapich2_build.log

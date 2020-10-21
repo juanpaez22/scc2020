@@ -1,0 +1,1 @@
+Linux 3.10.0-1127.el7.x86_64 x86_64 gcc gfortran gfortran g++ -DNDEBUG -DNVALGRIND -O2 -O2 -DNDEBUG -DNVALGRIND -O2 /opt/gcc-9.2.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/cycle/jetpack/bin:/mnt/exports/shared/home/ccuser/.local/bin:/mnt/exports/shared/home/ccuser/bin

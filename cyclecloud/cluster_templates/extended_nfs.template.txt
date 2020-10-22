@@ -65,19 +65,19 @@ mountpoint = /scratch
 fs_type = ext4
 raid_level = 5
 
-    [[nodearray execute]]
+    [[nodearray development]]
     MachineType = $ExecuteMachineType
     MaxCoreCount = $MaxExecuteCoreCount
 
 
-#    [[nodearray intel]]
-#    MachineType=H16r_Promo
+    [[nodearray intel]]
+    MachineType=Standard_H16r
 
-#    [[nodearray gpu]]
-#    MachineType=NC12_Promo
+    [[nodearray gpu]]
+    MachineType=Standard_NC12_Promo
 
-    [[nodearray development]]
-    MachineType=D16_v3
+#    [[nodearray development]]
+#    MachineType=D16_v3
 
 
     Interruptible = $UseLowPrio
@@ -131,9 +131,9 @@ Order = 10
 
         [[[parameter ExecuteMachineType]]]
         Label = Execute VM Type
-        Description = The VM type for execute nodes
+        Description = The VM type for development nodes
         ParameterType = Cloud.MachineType
-        DefaultValue = Standard_F2s_v2
+        DefaultValue = Standard_D16_v3
         Config.Multiselect = true
 
 

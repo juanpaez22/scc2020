@@ -1,0 +1,289 @@
+
+################################
+## Cluster Configuration File ##
+################################
+
+[cluster comp-v8]
+FormLayout = selectionpanel
+Category = Applications
+
+Autoscale = $Autoscale
+
+    [[node defaults]]
+    UsePublicNetwork = $UsePublicNetwork
+#hardcoded "azure" per email with andy saying to do that
+    Credentials = azure    
+    ImageName = $ImageName
+#hardcoded subnet id bc it's the only one we have available and you would need to set it in the UI everytime
+    SubnetId = scc-rg9/DefaultNetwork_southcentralus/default 
+    Region = $Region
+    KeyPairLocation = ~/.ssh/cyclecloud.pem
+    
+        [[[cluster-init cyclecloud/slurm:default]]]
+        Optional = True
+        
+        [[[cluster-init comp-v8:default:1.0.0]]]
+        Optional = True
+
+        [[[configuration]]]
+        
+
+    [[node master]]
+    MachineType = $MasterMachineType
+    IsReturnProxy = $ReturnProxy
+    AdditionalClusterInitSpecs = $MasterClusterInitSpecs
+    
+        [[[configuration]]]
+
+        [[[cluster-init cyclecloud/slurm:master]]]
+
+        [[[cluster-init comp-v8:master:1.0.0]]]
+        Optional = True
+
+        [[[network-interface eth0]]]
+        AssociatePublicIpAddress = $UsePublicNetwork
+
+        # Add 3 premium disks in a RAID 5 configuration to the NFS export
+        [[[volume nfs-1]]]
+        Size = 1024
+        SSD = true
+        Mount = nfs
+        Persistent = true
+
+        [[[volume nfs-2]]]
+        Size = 1024
+        SSD = true
+        Mount = nfs
+        Persistent = true
+
+        [[[volume nfs-3]]]
+        Size = 1024
+        SSD = true
+        Mount = nfs
+        Persistent = true
+
+        [[[configuration cyclecloud.mounts.nfs]]]
+#mounting our storage on /scratch, remember this is only mounted on master
+        mountpoint = /scratch
+        fs_type = ext4
+        raid_level = 5
+
+#at the nodearray sections here, kept settings for each array mostly the same but may
+#need to turn slurm.hpc to false for arrays you want embarassingly parallel jobs
+    [[nodearray execute]]
+    MachineType = $ExecuteMachineType
+    MaxCoreCount = $MaxExecuteCoreCount
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.default_partition = true
+        slurm.hpc = true
+
+    Interruptible = $UseLowPrio
+    AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs
+
+        [[[cluster-init cyclecloud/slurm:execute]]]
+
+        [[[cluster-init comp-v8:execute:1.0.0]]]
+        Optional = True
+        [[[network-interface eth0]]]
+        AssociatePublicIpAddress = $ExecuteNodesPublic
+
+
+    [[nodearray intel]]
+    MachineType=$intelMachineType
+    MaxCoreCount = $MaxintelCoreCount
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.hpc = true
+
+        [[[cluster-init cyclecloud/slurm:execute]]]
+
+        [[[cluster-init comp-v8:execute:1.0.0]]]
+        Optional = True
+#set this interface to ib0 since this array has vms that do run on infiniband
+        [[[network-interface ib0]]]
+        AssociatePublicIpAddress = $ExecuteNodesPublic
+
+    [[nodearray gpu]]
+    MachineType=$gpuMachineType
+    MaxCoreCount = $MaxgpuCoreCount
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.hpc = true
+
+        [[[cluster-init cyclecloud/slurm:execute]]]
+
+        [[[cluster-init comp-v8:execute:1.0.0]]]
+        Optional = True
+        [[[network-interface eth0]]]
+        AssociatePublicIpAddress = $ExecuteNodesPublic
+
+
+[parameters About]
+Order = 1
+
+    [[parameters About comp-v8]]
+
+        [[[parameter comp-v8]]]
+        HideLabel = true
+        Config.Plugin = pico.widget.HtmlTemplateWidget
+        Config.Template = '''<p>Insert template description here</p>'''
+
+[parameters Required Settings]
+Order = 10
+
+    [[parameters Virtual Machines ]]
+    Description = "The cluster, in this case, has two roles: the scheduler master-node with shared filer and the execute hosts. Configure which VM types to use based on the requirements of your application."
+    Order = 20
+
+        [[[parameter Region]]]
+        Label = Region
+        Description = Deployment Location
+        ParameterType = Cloud.Region
+#changed to our region
+        DefaultValue = southcentralus
+
+#defining parameters for nodearrays we will want, the vms are specificed here so when export the parameters we can kept those configs 
+        [[[parameter MasterMachineType]]]
+        Label = Master VM Type
+        Description = The VM type for scheduler master and shared filer.
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_D12_v2
+
+        [[[parameter ExecuteMachineType]]]
+        Label = Execute VM Type
+        Description = The VM type for execute nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_D16_v3
+        Config.Multiselect = true
+
+        [[[parameter intelMachineType]]]
+        Label = intel VM Type
+        Description = The VM type for intel nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_H16r
+        Config.Multiselect = true
+
+        [[[parameter gpuMachineType]]]
+        Label = gpu VM Type
+        Description = The VM type for gpu nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_NC12
+        Config.Multiselect = true
+
+
+    [[parameters Auto-Scaling]]
+    Description = "The cluster can autoscale to the workload, adding execute hosts as jobs are queued. To enable this check the box below and choose the initial and maximum core counts for the cluster"
+    Order = 30
+
+       [[[parameter Autoscale]]]
+        Label = Autoscale
+        DefaultValue = true
+        Widget.Plugin = pico.form.BooleanCheckBox
+        Widget.Label = Start and stop execute instances automatically
+
+#defining the max core count for each array, this will determine how many nodes you'll have available
+#i experimented with different values but in the webinar they said you can keep the defaults at 100
+#i think you should experiment with the numbers bc in this competition you are also limited by core count
+        [[[parameter MaxExecuteCoreCount]]]
+        Label = Max Cores
+        Description = The total number of execute cores to start
+        DefaultValue = 100
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
+
+        [[[parameter MaxintelCoreCount]]]
+        Label = Max Cores
+        Description = The total number of execute cores to start
+        DefaultValue = 32
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
+
+        [[[parameter MaxgpuCoreCount]]]
+        Label = Max Cores
+        Description = The total number of execute cores to start
+        DefaultValue = 48
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
+
+
+        [[[parameter UseLowPrio]]]
+        Label = Low Priority
+        DefaultValue = false
+        Widget.Plugin = pico.form.BooleanCheckBox
+        Widget.Label = Use low priority instances for execute hosts
+
+    [[parameters Networking]]
+    Order = 40
+
+        [[[parameter SubnetId]]]
+        Label = Subnet ID
+        Description = Subnet Resource Path (ResourceGroup/VirtualNetwork/Subnet)
+        ParameterType = Azure.Subnet
+        Required = True
+
+
+[parameters Advanced Settings]
+Order = 20
+
+    [[parameters Azure Settings]]
+    Order = 10 
+
+        [[[parameter Credentials]]]
+        Description = The credentials for the cloud provider
+        ParameterType = Cloud.Credentials
+
+    [[parameters comp-v8 Settings ]]
+    Description = "Section for configuring comp-v8"
+    Order = 5
+
+        
+
+    [[parameters Software]]
+    Description = "Specify the scheduling software, and base OS installed on all nodes, and optionally the cluster-init and chef versions from your Locker."
+    Order = 10
+
+        [[[parameter ImageName]]]
+        Label = Base OS
+        ParameterType = Cloud.Image
+        Config.OS = linux
+        DefaultValue = cycle.image.centos7
+        Config.Filter := Package === "cycle.image.centos7"
+
+        [[[parameter MasterClusterInitSpecs]]]
+        Label = Master Cluster-Init
+        DefaultValue = =undefined
+        Description = Cluster init specs to apply to the master node
+        ParameterType = Cloud.ClusterInitSpecs
+    
+        [[[parameter ExecuteClusterInitSpecs]]]
+        Label = Execute Cluster-Init
+        DefaultValue = =undefined
+        Description = Cluster init specs to apply to execute nodes
+        ParameterType = Cloud.ClusterInitSpecs
+	
+
+    [[parameters Advanced Networking]]
+    Description = Advanced networking settings
+
+        [[[parameter ReturnProxy]]]
+        Label = Return Proxy
+        DefaultValue = true
+        ParameterType = Boolean
+        Config.Label = Use SSH tunnel to connect to CycleCloud (required if direct access is blocked)
+
+        [[[parameter UsePublicNetwork]]]
+        Label = Public Head Node
+        DefaultValue = true
+        ParameterType = Boolean
+        Config.Label = Access master node from the Internet
+
+        [[[parameter ExecuteNodesPublic]]]
+        Label = Public Execute
+        DefaultValue = false
+        ParameterType = Boolean
+        Config.Label = Access execute nodes from the Internet
+        Conditions.Excluded := UsePublicNetwork isnt true

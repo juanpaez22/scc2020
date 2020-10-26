@@ -48,21 +48,21 @@ Autoscale = $Autoscale
 #	StorageAccountType = StandardSSD_LRS
 #	Mount = data
 
-        # Add 1 premium disksto the NFS export
+        # Add 1 premium disk of 3TB size to the NFS export
         [[[volume nfs-1]]]
-        Size = 2048
+        Size = 3072
         SSD = true
-        Mount = scratch
+        Mount = data
         Persistent = true
 ###
 
         [[[configuration cyclecloud.mounts.data]]]
-        mountpoint = /scratch
+        mountpoint = /data
         fs_type = ext4
 
 	[[[configuration cyclecloud.exports.nfs_data]]]
 	type = nfs
-	export_path = /scratch
+	export_path = /data
         ### End changes
 
         [[[input-endpoint ganglia]]]
@@ -91,8 +91,8 @@ Autoscale = $Autoscale
 	### begin changes
 	[[[configuration cyclecloud.mounts.nfs_data]]]
 	type = nfs
-	mountpoint = /scratch
-	export_path = /scratch
+	mountpoint = /data
+	export_path = /data
 	### end changes
 	
 
@@ -119,8 +119,8 @@ Autoscale = $Autoscale
 	### begin changes
 	[[[configuration cyclecloud.mounts.nfs_data]]]
 	type = nfs
-	mountpoint = /scratch
-	export_path = /scratch
+	mountpoint = /data
+	export_path = /data
 	### end changes
 
     [[nodearray gpu]]
@@ -136,8 +136,35 @@ Autoscale = $Autoscale
         ### begin changes
         [[[configuration cyclecloud.mounts.nfs_data]]]
         type = nfs
-        mountpoint = /scratch
-        export_path = /scratch
+        mountpoint = /data
+        export_path = /data
+        ### end changes
+
+#test node array to see if we are limited by number of slurm partitions
+    [[nodearray hpc2]]
+    MachineType = $hpc2MachineType
+    ImageName = $HTCImageName
+    MaxCoreCount = $MaxHTCExecuteCoreCount
+
+    Interruptible = $HTCUseLowPrio
+    AdditionalClusterInitSpecs = $HTCClusterInitSpecs
+
+
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.default_partition = false
+        slurm.hpc = true
+
+        [[[cluster-init cyclecloud/slurm:execute]]]
+
+        [[[network-interface eth0]]]
+        AssociatePublicIpAddress = $ExecuteNodesPublic
+
+        ### begin changes
+        [[[configuration cyclecloud.mounts.nfs_data]]]
+        type = nfs
+        mountpoint = /data
+        export_path = /data
         ### end changes
 
 
@@ -175,7 +202,7 @@ Order = 10
         Label = HPC VM Type
         Description = The VM type for HPC execute nodes
         ParameterType = Cloud.MachineType
-        DefaultValue = Standard_H16r
+        DefaultValue = Standard_HC44rs
 
         [[[parameter developmentMachineType]]]
         Label = HTC VM Type
@@ -187,7 +214,14 @@ Order = 10
         Label = GPU VM Type
         Description = The VM type for GPU execute nodes
         ParameterType = Cloud.MachineType
-        DefaultValue = Standard_NC12
+        DefaultValue = Standard_NC12s_v2
+
+#hpc2 nodearray to verify some things
+        [[[parameter hpc2MachineType]]]
+        Label = hpc2 VM Type
+        Description = The VM type for hpc2 execute nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_D32s_v3
 
     [[parameters Auto-Scaling]]
     Description = "The cluster can autoscale to the workload, adding execute hosts as jobs are queued. To enable this check the box below and choose the initial and maximum core counts for the cluster"

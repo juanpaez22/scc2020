@@ -2,7 +2,7 @@
 
 CXX = mpicxx
 CXXFLAGS = -std=c++11 -qopenmp
-OPTFLAGS = -O3 -xhost 
+OPTFLAGS = -O3 -xMIC_AVX512
 
 LD_FLAGS = -qopenmp
 
@@ -20,4 +20,4 @@ memxct: $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LD_FLAGS)
 
 clean:
-	rm -f $(TARGETS) src/*.o src/*.o.* *.txt *.bin core
+	rm -f $(TARGETS) src/*.o src/*.o.* *.bin core

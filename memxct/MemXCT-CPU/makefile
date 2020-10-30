@@ -2,7 +2,7 @@
 
 CXX = mpicxx
 CXXFLAGS = -std=c++11 -qopenmp
-OPTFLAGS = -O3 -xhost 
+CXXFLAGS += -O3 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
 
 LD_FLAGS = -qopenmp
 
@@ -11,13 +11,14 @@ OBJECTS = src/main.o src/raytrace.o src/kernels.o
 
 # ----- Make Rules -----
 
-all:	$(TARGETS)
+# all:	$(TARGETS)
 
 %.o: %.cpp vars.h
-	${CXX} ${CXXFLAGS} ${OPTFLAGS} $^ -c -o $@
+	echo "Compling $^"
+	${CXX} ${CXXFLAGS} ${OPT_FLAGS} $^ -c -o $@
 
 memxct: $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LD_FLAGS)
 
 clean:
-	rm -f $(TARGETS) src/*.o src/*.o.* *.txt *.bin core
+	rm -f $(TARGETS) src/*.o src/*.o.* *.bin core

@@ -33,7 +33,10 @@ Autoscale = $Autoscale
     ImageName = $MasterImageName
     IsReturnProxy = $ReturnProxy
     AdditionalClusterInitSpecs = $MasterClusterInitSpecs
-    
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
+
         [[[configuration]]]
 
         [[[cluster-init cyclecloud/slurm:master]]]
@@ -76,7 +79,9 @@ Autoscale = $Autoscale
     MaxCoreCount = $MaxHPCExecuteCoreCount
     Azure.MaxScalesetSize = $HPCMaxScalesetSize
     AdditionalClusterInitSpecs = $HPCClusterInitSpecs
-
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
 
         [[[configuration]]]
         slurm.autoscale = true
@@ -101,10 +106,11 @@ Autoscale = $Autoscale
     MachineType = $developmentMachineType
     ImageName = $HTCImageName
     MaxCoreCount = $MaxHTCExecuteCoreCount
-
     Interruptible = $HTCUseLowPrio
     AdditionalClusterInitSpecs = $HTCClusterInitSpecs
-
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
 
         [[[configuration]]]
         slurm.autoscale = true
@@ -128,7 +134,10 @@ Autoscale = $Autoscale
     Machinetype = $GPUMachineType
     ImageName = $gpuImageName
     MaxCoreCount = $MaxgpuExecuteCoreCount
- 
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
+
         [[[configuration]]]
         slurm.autoscale = true
         slurm.hpc = true
@@ -145,10 +154,11 @@ Autoscale = $Autoscale
     MachineType = $hpc2MachineType
     ImageName = $HTCImageName
     MaxCoreCount = $MaxHTCExecuteCoreCount
-
     Interruptible = $HTCUseLowPrio
     AdditionalClusterInitSpecs = $HTCClusterInitSpecs
-
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
 
         [[[configuration]]]
         slurm.autoscale = true

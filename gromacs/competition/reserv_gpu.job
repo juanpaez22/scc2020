@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -J reserv_gpu
+#SBATCH -o /data/ccuser/scc2020/gromacs/competition/reserv_gpu.out
+#SBATCH -e /data/ccuser/scc2020/gromacs/competition/reserv_gpu.err
+#SBATCH -p gpu
+#SBATCH -t 12:00:00
+#SBATCH -N 2
+#SBATCH -n 24
+
+/data/ccuser/get_node_ips.py
+sudo yum -y install pdsh
+pdsh -w ^hostfile.txt /data/ccuser/scc2020/gromacs/competition/init_gmx_gpu.sh
+sleep 50000
+

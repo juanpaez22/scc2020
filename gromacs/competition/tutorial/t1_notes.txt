@@ -1,0 +1,47 @@
+1. Generate topology:
+	- Get pdb lysozyme file: wget https://files.rcsb.org/download/1AKI.pdb
+	- Delete water molecules (janky): grep -v HOH 1AKI.pdb > 1AKI_clean.pdb
+	- pdb2gmx: gmx_mpi pdb2gmx -f 1AKI_clean.pdb -o 1AKI_processed.gro -water spce (choose force field- 15)
+	- result: .gro, .top. and .itp files
+
+2. Define box and solvate:
+	- Define box: gmx_mpi editconf -f 1AKI_processed.gro -o 1AKI_newbox.gro -c -d 1.0 -bt cubic
+	- -c: center, -d: nm from edge, -bt: box type
+	- Solvation: gmx_mpi solvate -cp 1AKI_newbox.gro -cs spc216.gro -o 1AKI_solv.gro -p topol.top
+	- -cs: solvent configuration, spc216 is installed by default with gromacs
+
+3. Add ions:
+	- download ions mdp file: wget http://www.mdtutorials.com/gmx/lysozyme/Files/ions.mdp
+	- gmx_mpi grompp -f ions.mdp -c 1AKI_solv.gro -p topol.top -o ions.tpr
+	- generate the ions: gmx_mpi genion -s ions.tpr -o 1AKI_solv_ions.gro -p topol.top -pname NA -nname CL -neutral
+	- select group 13 (SOL) to replace solution with ions (not protein)
+	- topol.top should now reflect protein, solvent, and CL ions
+
+4. Energy minimization: relax system
+	- download energy minimization mdp file: wget http://www.mdtutorials.com/gmx/lysozyme/Files/minim.mdp
+	- gmx_mpi grompp -f minim.mdp -c 1AKI_solv_ions.gro -p topol.top -o em.tpr
+	- energy minimization: gmx_mpi mdrun -v -deffnm em
+	- analyze energy: gmx energy -f em.edr -o potential.xvg
+
+5. Equilibration: optimize solvent with solute
+	- stage 1: download NVT (number, volume, temperature) mdp file: wget http://www.mdtutorials.com/gmx/lysozyme/Files/nvt.mdp
+	- gmx_mpi grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr
+	- gmx_mpi mdrun -deffnm nvt
+	- analyze temperature: gmx_mpi energy -f nvt.edr -o temperature.xvg (16 0)
+	- stage 2:download NPT (number, pressure, temperature) mdp file: wget http://www.mdtutorials.com/gmx/lysozyme/Files/npt.mdp
+	- gmx_mpi grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt.tpr
+	- gmx_mpi mdrun -deffnm npt
+	- analyze pressure: gmx_mpi energy -f npt.edr -o pressure.xvg (18 0)
+	- analyze density: gmx_mpi energy -f npt.edr -o density.xvg (24 0)
+
+6. FINALLY production simulation
+	- download md mdp file: wget http://www.mdtutorials.com/gmx/lysozyme/Files/md.mdp
+	- gmx_mpi grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr
+	- gmx_mpi mdrun -deffnm md_0_1 -nb gpu (for gpu run, omit last flag for no gpu)
+
+
+7. Analysis
+	- trjocnv: post-processing trajectory
+	- rms: structural stability
+	- gyrate: compaction
+

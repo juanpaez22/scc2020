@@ -1,0 +1,34 @@
+Gromacs Competition Cheat Sheet
+
+TASK 1: Default Scaling Performance
+- Input: input_xxx.gro, em.mdp, pr.mdp, production.mpd
+- Engergy minimization:
+	- gmx_mpi grompp -f em.mdp -c input_xxx.gro -p topol.top -o em.tpr
+	- gmx_mpi mdrun -v -deffnm em
+- Pressure equilibration:
+	- gmx_mpi grompp -f pr.mdp -c em.gro -r em.gro -p topol.top -o pr.tpr
+	- gmx_mpi mdrun -v -deffnm pr
+- Production run:
+	- set production.mdp to 750ps (e.g. if dt is 0.002, set nsteps to 375000)
+	- gmx_mpi grompp -f production.mdp -c pr.gro -t pr.cpt -p topol.top -o md_xxx.tpr
+	- mpirun -np $np -ppn $ppn -hostfile /data/ccuser/scc2020/gromacs/competition/hostfile.txt gmx_mpi mdrun -deffnm md_xxx
+
+TASK 2: Force-field dependent performance metric
+- Input: coordinate files (format?? Assume .gro, else use pdb2gmx)
+- Make sure water specified in .top file is spce, not spc
+- Define box & solvate:
+	- gmx_mpi editconf -f xxx.gro -o xxx_boxed.gro -c -d 1.3 -bt cubic
+	- gmx_mpi solvate -cp xxx_boxed.gro -cs spc216.gro -o xxx_solv.gro -p topol.top
+- Modify vdw cutoffs in .mdp files as per table, and ensure nstxout/nsteps/dt match requirements
+- Repeat energy minimization and pressure equilibration steps from above
+- Production run as above
+	- first run scaling tests with enough points
+	- then generate 10 ns (10,000 ps) long trajectories
+- Analysis:
+	- Gyration radius: gmx_mpi gyrate -s xxx.tpr -f xxx.trr -o gyrate_xxx.xvg
+	- Solvent accessible surface area: gmx_mpi sasa -s xx.tpr -f xxx.trr -o sasa_xxx.xvg
+	- Hydrogen bonds: gmx_mpi hbond -s xxx.tpr -f xxx.trr -num hbond.xvg
+	- Energy: gmx_mpi energy -s xxx.tpr -f xxx.edr -o ener.xvg
+
+TASK 3: Temperature Replica Exchange Simulation
+- TODO

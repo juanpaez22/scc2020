@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -J reserv_cpu
+#SBATCH -o /data/ccuser/scc2020/gromacs/competition/reserv_cpu.out
+#SBATCH -e /data/ccuser/scc2020/gromacs/competition/reserv_cpu.err
+#SBATCH -p development
+#SBATCH -t 12:00:00
+#SBATCH -N 4
+#SBATCH -n 48
+
+/data/ccuser/get_node_ips.py
+sudo yum -y install pdsh
+pdsh -w ^hostfile.txt /data/ccuser/scc2020/gromacs/competition/init_gmx_cpu.sh
+sleep 50000
+

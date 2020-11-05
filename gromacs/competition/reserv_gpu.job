@@ -4,8 +4,8 @@
 #SBATCH -e /data/ccuser/scc2020/gromacs/competition/reserv_gpu.err
 #SBATCH -p gpu
 #SBATCH -t 12:00:00
-#SBATCH -N 2
-#SBATCH -n 24
+#SBATCH -N 1
+#SBATCH -n 12
 
 /data/ccuser/get_node_ips.py
 sudo yum -y install pdsh

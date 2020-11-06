@@ -37,8 +37,7 @@ Autoscale = $Autoscale
     echo "cloud-init works" > /tmp/cloud-init.txt
     sudo yum -y install perl-XML-LibXML
     sudo yum -y install cmake
-    sudo yum -y install 
-    sudo yum -y htop
+    sudo yum -y install htop
     echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
@@ -62,7 +61,7 @@ Autoscale = $Autoscale
         SSD = true
         Mount = data
         Persistent = true
-###
+
 
         [[[configuration cyclecloud.mounts.data]]]
         mountpoint = /data
@@ -89,8 +88,7 @@ Autoscale = $Autoscale
     sudo yum -y install epel-release
     sudo yum -y install perl-XML-LibXML
     sudo yum -y install cmake
-    sudo yum -y install 
-    sudo yum -y htop
+    sudo yum -y install htop
     echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
@@ -122,8 +120,7 @@ Autoscale = $Autoscale
     CloudInit = '''#!/bin/bash
     sudo yum -y install epel-release
     sudo yum -y install cmake
-    sudo yum -y install 
-    sudo yum -y htop
+    sudo yum -y install htop
     echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
@@ -152,10 +149,8 @@ Autoscale = $Autoscale
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
     sudo yum -y install epel-release
-    sudo yum -y install perl-XML-LibXML
-    sudo yum -y install cmake
-    sudo yum -y install 
-    sudo yum -y htop
+    sudo yum -y install htop
+    sudo /data/clout-init/nvidia.sh
     '''
         [[[configuration]]]
         slurm.autoscale = true
@@ -180,8 +175,7 @@ Autoscale = $Autoscale
     sudo yum -y install epel-release
     sudo yum -y install perl-XML-LibXML
     sudo yum -y install cmake
-    sudo yum -y install
-    sudo yum -y htop
+    sudo yum -y install htop
     echo "packages installed" > /tmp/cloud_completed.txt
     '''
 

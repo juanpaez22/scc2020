@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH --job-name=io500_test        # Job name
+#SBATCH --nodes=2                    # Run all processes on 2 nodes	
+#SBATCH -n 20
+#SBATCH -A SCC2020
+#SBATCH --time=00:10:00              # Time limit hrs:min:sec
+#SBATCH --output=out_%j     # Standard output and error log
+#SBATCH --error=errors_%j
+#SBATCH -p skx-dev
+./io500.sh my-config.ini

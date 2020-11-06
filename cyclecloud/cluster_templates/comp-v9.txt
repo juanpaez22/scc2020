@@ -150,7 +150,7 @@ Autoscale = $Autoscale
     echo "cloud-init works" > /tmp/cloud-init.txt
     sudo yum -y install epel-release
     sudo yum -y install htop
-    sudo /data/clout-init/nvidia.sh
+    sudo /data/cloud-init/nvidia.sh
     '''
         [[[configuration]]]
         slurm.autoscale = true

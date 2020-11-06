@@ -35,6 +35,11 @@ Autoscale = $Autoscale
     AdditionalClusterInitSpecs = $MasterClusterInitSpecs
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
+    sudo yum -y install perl-XML-LibXML
+    sudo yum -y install cmake
+    sudo yum -y install 
+    sudo yum -y htop
+    echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
         [[[configuration]]]
@@ -81,6 +86,12 @@ Autoscale = $Autoscale
     AdditionalClusterInitSpecs = $HPCClusterInitSpecs
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
+    sudo yum -y install epel-release
+    sudo yum -y install perl-XML-LibXML
+    sudo yum -y install cmake
+    sudo yum -y install 
+    sudo yum -y htop
+    echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
         [[[configuration]]]
@@ -109,7 +120,11 @@ Autoscale = $Autoscale
     Interruptible = $HTCUseLowPrio
     AdditionalClusterInitSpecs = $HTCClusterInitSpecs
     CloudInit = '''#!/bin/bash
-    echo "cloud-init works" > /tmp/cloud-init.txt
+    sudo yum -y install epel-release
+    sudo yum -y install cmake
+    sudo yum -y install 
+    sudo yum -y htop
+    echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
         [[[configuration]]]
@@ -136,8 +151,12 @@ Autoscale = $Autoscale
     MaxCoreCount = $MaxgpuExecuteCoreCount
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
+    sudo yum -y install epel-release
+    sudo yum -y install perl-XML-LibXML
+    sudo yum -y install cmake
+    sudo yum -y install 
+    sudo yum -y htop
     '''
-
         [[[configuration]]]
         slurm.autoscale = true
         slurm.hpc = true
@@ -153,11 +172,17 @@ Autoscale = $Autoscale
     [[nodearray hpc2]]
     MachineType = $hpc2MachineType
     ImageName = $HTCImageName
-    MaxCoreCount = $MaxHTCExecuteCoreCount
+    MaxCoreCount = $MaxHPC2ExecuteCoreCount
     Interruptible = $HTCUseLowPrio
     AdditionalClusterInitSpecs = $HTCClusterInitSpecs
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
+    sudo yum -y install epel-release
+    sudo yum -y install perl-XML-LibXML
+    sudo yum -y install cmake
+    sudo yum -y install
+    sudo yum -y htop
+    echo "packages installed" > /tmp/cloud_completed.txt
     '''
 
         [[[configuration]]]
@@ -246,7 +271,15 @@ Order = 10
         [[[parameter MaxHPCExecuteCoreCount]]]
         Label = Max HPC Cores
         Description = The total number of HPC execute cores to start
-        DefaultValue = 100
+        DefaultValue = 1760
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
+
+        [[[parameter MaxHPC2ExecuteCoreCount]]]
+        Label = Max HPC2 Cores
+        Description = The total number of HPC2 execute cores to start
+        DefaultValue = 1024
         Config.Plugin = pico.form.NumberTextBox
         Config.MinValue = 1
         Config.IntegerOnly = true
@@ -254,7 +287,7 @@ Order = 10
         [[[parameter MaxHTCExecuteCoreCount]]]
         Label = Max HTC Cores
         Description = The total number of HTC execute cores to start
-        DefaultValue = 100
+        DefaultValue = 320
         Config.Plugin = pico.form.NumberTextBox
         Config.MinValue = 1
         Config.IntegerOnly = true
@@ -262,7 +295,7 @@ Order = 10
         [[[parameter MaxgpuExecuteCoreCount]]]
         Label = Max gpu Cores
         Description = The total number of gpu execute cores to start
-        DefaultValue = 100
+        DefaultValue = 600
         Config.Plugin = pico.form.NumberTextBox
         Config.MinValue = 1
         Config.IntegerOnly = true

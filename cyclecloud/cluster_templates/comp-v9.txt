@@ -148,9 +148,6 @@ Autoscale = $Autoscale
     MaxCoreCount = $MaxgpuExecuteCoreCount
     CloudInit = '''#!/bin/bash
     echo "cloud-init works" > /tmp/cloud-init.txt
-    sudo yum -y install epel-release
-    sudo yum -y install htop
-    sudo /data/cloud-init/nvidia.sh
     '''
         [[[configuration]]]
         slurm.autoscale = true

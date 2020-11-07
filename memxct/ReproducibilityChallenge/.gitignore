@@ -1,0 +1,12 @@
+# Compiled dir
+bin/
+
+# Datasets
+data/
+
+# Run output
+run/output/*.bin
+run/output/memxct*
+
+# Build artifacts
+src/*.o

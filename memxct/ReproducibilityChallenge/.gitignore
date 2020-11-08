@@ -9,4 +9,5 @@ run/output/*.bin
 run/output/memxct*
 
 # Build artifacts
-src/*.o
+src/cpu/*.o
+src/gpu/*.o

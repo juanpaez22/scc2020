@@ -4,7 +4,7 @@
   "gpuImageName" : "cycle.image.centos7",
   "SubnetId" : "scc-rg9/DefaultNetwork_southcentralus/default",
   "Region" : "southcentralus",
-  "MaxHPCExecuteCoreCount" : 1760,
+  "MaxHPCExecuteCoreCount" : 792,
   "MasterClusterInitSpecs" : null,
   "HTCImageName" : "cycle.image.centos7",
   "MaxHTCExecuteCoreCount" : 320,
@@ -20,11 +20,13 @@
   "slurm" : null,
   "MaxHPC2ExecuteCoreCount" : 1024,
   "GPUMachineType" : "Standard_NC12s_v2",
+  "GPU2MachineType" : "Standard_NC24rs_v3",
   "HTCUseLowPrio" : false,
   "HPCClusterInitSpecs" : null,
   "HPCMachineType" : "Standard_HC44rs",
   "ExecuteNodesPublic" : false,
   "HTCClusterInitSpecs" : null,
-  "MaxgpuExecuteCoreCount" : 600,
+  "MaxgpuExecuteCoreCount" : 168,
+  "Maxgpu2ExecuteCoreCount" : 192,
   "HPCMaxScalesetSize" : 100
 }

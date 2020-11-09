@@ -160,6 +160,25 @@ Autoscale = $Autoscale
         export_path = /data
         ### end changes
 
+    [[nodearray gpu2]]
+    Extends = hpc
+    Machinetype = $GPU2MachineType
+    ImageName = $gpu2ImageName
+    MaxCoreCount = $Maxgpu2ExecuteCoreCount
+    CloudInit = '''#!/bin/bash
+    echo "cloud-init works" > /tmp/cloud-init.txt
+    '''
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.hpc = true
+        slurm.default_partition = false
+        ### begin changes
+        [[[configuration cyclecloud.mounts.nfs_data]]]
+        type = nfs
+        mountpoint = /data
+        export_path = /data
+        ### end changes
+
 #test node array to see if we are limited by number of slurm partitions
     [[nodearray hpc2]]
     MachineType = $hpc2MachineType
@@ -242,6 +261,12 @@ Order = 10
         ParameterType = Cloud.MachineType
         DefaultValue = Standard_NC12s_v2
 
+        [[[parameter GPU2MachineType]]]
+        Label = GPU2 VM Type
+        Description = The VM type for GPU2 execute nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_NC24rs_v3
+
 #hpc2 nodearray to verify some things
         [[[parameter hpc2MachineType]]]
         Label = hpc2 VM Type
@@ -262,7 +287,7 @@ Order = 10
         [[[parameter MaxHPCExecuteCoreCount]]]
         Label = Max HPC Cores
         Description = The total number of HPC execute cores to start
-        DefaultValue = 1760
+        DefaultValue = 792
         Config.Plugin = pico.form.NumberTextBox
         Config.MinValue = 1
         Config.IntegerOnly = true
@@ -286,11 +311,18 @@ Order = 10
         [[[parameter MaxgpuExecuteCoreCount]]]
         Label = Max gpu Cores
         Description = The total number of gpu execute cores to start
-        DefaultValue = 600
+        DefaultValue = 168
         Config.Plugin = pico.form.NumberTextBox
         Config.MinValue = 1
         Config.IntegerOnly = true
 
+        [[[parameter Maxgpu2ExecuteCoreCount]]]
+        Label = Max gpu2 Cores
+        Description = The total number of gpu2 execute cores to start
+        DefaultValue = 192
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
 
         [[[parameter HPCMaxScalesetSize]]]
         Label = Max VMs per Scaleset
@@ -381,6 +413,13 @@ Order = 20
 
         [[[parameter gpuImageName]]]
         Label = gpu OS
+        ParameterType = Cloud.Image
+        Config.OS = linux
+        DefaultValue = cycle.image.centos7
+        Config.Filter := Package in {"cycle.image.centos7", "cycle.image.ubuntu18"}
+
+        [[[parameter gpu2ImageName]]]
+        Label = gpu2 OS
         ParameterType = Cloud.Image
         Config.OS = linux
         DefaultValue = cycle.image.centos7

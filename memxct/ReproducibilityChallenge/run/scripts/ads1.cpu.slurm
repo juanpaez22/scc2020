@@ -34,7 +34,7 @@ export SINFILE=../../data/ADS1_sinogram.bin
 export OUTFILE=../output/recon_ADS1.bin
 
 #SET OMP THREADS
-#export OMP_NUM_THREADS=$1
+export OMP_NUM_THREADS=$2
 
 # Source libraries
 source /data/compilers/intel20u2/compilers_and_libraries/linux/bin/compilervars.sh intel64

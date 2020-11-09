@@ -7,6 +7,8 @@ data/
 # Run output
 run/output/*.bin
 run/output/memxct*
+run/scripts/jobnums/
+
 
 # Build artifacts
 src/cpu/*.o

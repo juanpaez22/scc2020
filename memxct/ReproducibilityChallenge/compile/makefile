@@ -1,7 +1,7 @@
 # ----- Make Macros -----
 
 CXX = mpiicpc
-CXXFLAGS = -std=c++11 -qopenmp -O3 -axAVX512,AVX2
+CXXFLAGS = -std=c++11 -qopenmp -O3 -axCORE-AVX512,AVX2
 #OPTFLAGS += -qopt-zmm-usage=high
 
 NVCC = nvcc
@@ -45,3 +45,7 @@ $(GPU_TARGET): $(GPU_OBJS)
 clean:
 	rm -f $(CPU_SRC_P)/*.o $(CPU_TARGET)
 	rm -f $(GPU_SRC_P)/*.o $(GPU_TARGET)
+
+versions:
+	$(CXX) --version
+	$(NVCC) --version

@@ -4,13 +4,8 @@ source /data/compilers/intel20u2/impi/2019.8.254/intel64/bin/mpivars.sh
 source /data/compilers/intel20u2/mkl/bin/mklvars.sh intel64
 #export PATH=$PATH:/usr/local/cuda-10.2/bin
 export PATH=$PATH:/usr/local/cuda-11.1/bin
-#export CFLAGS="-I$/usr/local/cuda-11.1 $CFLAGS"
-#export CPATH=/usr/local/cuda-11.1/targets/x86_64-linux/include:$CPATH
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.1/lib64
 
-#echo $(which nvcc)
-#echo $PATH
-#echo $LD_LIBRARY_PATH
+make versions
 
 make clean
 make gpu

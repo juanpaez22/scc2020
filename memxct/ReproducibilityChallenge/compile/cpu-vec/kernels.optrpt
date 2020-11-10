@@ -1,0 +1,636 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+Begin optimization report for: projection(float *, float *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(73,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(74,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(77,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(81,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Peeled loop for vectorization>
+               remark #15301: PEEL LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+               remark #15300: LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Remainder loop for vectorization>
+               remark #15301: REMAINDER LOOP WAS VECTORIZED
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+         remark #15300: LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(104,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Peeled loop for vectorization>
+      remark #15301: PEEL LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Remainder loop for vectorization>
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: projection(float *, float *) [skylake_avx512]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(73,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(74,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(77,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(81,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+               remark #15300: LOOP WAS VECTORIZED
+               remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+         remark #15300: LOOP WAS VECTORIZED
+         remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(104,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+      remark #15300: LOOP WAS VECTORIZED
+      remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: projection(float *, float *) [haswell]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(73,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(74,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(77,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+         <Remainder loop for vectorization>
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(81,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+               remark #15300: LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+         remark #15300: LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(104,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: projection(float *, float *) [generic]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(73,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(74,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(75,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(77,9)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+         remark #15346: vector dependence: assumed FLOW dependence between input[n] (79:13) and input[*(*?+n*2)] (83:15)
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+            remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(78,11)
+         <Remainder>
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(81,11)
+            remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ ../src/cpu/kernels.cpp(82,13) ]
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+               remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(82,13)
+            <Remainder>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(86,9)
+      <Remainder>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(104,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between raybuff[*(rayrayind+kk*4)] (107:9) and mes[k] (108:7)
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   LOOP END
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(106,7)
+   <Remainder>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: backprojection(float *, float *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between raybuff[k] (124:7) and res[*(rayrecvlist+k*4)] (124:7)
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(151,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(152,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(155,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(159,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Peeled loop for vectorization>
+               remark #15301: PEEL LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+               remark #15300: LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Remainder loop for vectorization>
+               remark #15301: REMAINDER LOOP WAS VECTORIZED
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+         remark #15300: LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: backprojection(float *, float *) [skylake_avx512]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between raybuff[k] (124:7) and res[*(rayrecvlist+k*4)] (124:7)
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(151,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(152,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(155,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(159,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+               remark #15300: LOOP WAS VECTORIZED
+               remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+         <Remainder loop for vectorization>
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+         remark #15300: LOOP WAS VECTORIZED
+         remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: backprojection(float *, float *) [haswell]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between raybuff[k] (124:7) and res[*(rayrecvlist+k*4)] (124:7)
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(151,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(152,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(155,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+         <Remainder loop for vectorization>
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(159,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+               remark #15300: LOOP WAS VECTORIZED
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+         remark #15300: LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: backprojection(float *, float *) [generic]
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between raybuff[k] (124:7) and res[*(rayrecvlist+k*4)] (124:7)
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(122,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ../src/cpu/kernels.cpp(151,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ../src/cpu/kernels.cpp(152,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+            remark #15300: LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(153,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(155,9)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+         remark #15346: vector dependence: assumed FLOW dependence between input[n] (157:13) and input[*(*?+n*2)] (161:15)
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+            remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(156,11)
+         <Remainder>
+         LOOP END
+
+         LOOP BEGIN at ../src/cpu/kernels.cpp(159,11)
+            remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ ../src/cpu/kernels.cpp(160,13) ]
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+               remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+            LOOP END
+
+            LOOP BEGIN at ../src/cpu/kernels.cpp(160,13)
+            <Remainder>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      LOOP END
+
+      LOOP BEGIN at ../src/cpu/kernels.cpp(164,9)
+      <Remainder>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

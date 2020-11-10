@@ -2,7 +2,9 @@
 
 CXX = mpiicpc
 CXXFLAGS = -std=c++11 -qopenmp -O3 -axCORE-AVX512,AVX2
-#OPTFLAGS += -qopt-zmm-usage=high
+
+# Vectorization flags
+CXXFLAGS += -qopt-report=2 -qopt-report-phase=vec
 
 NVCC = nvcc
 NVCCFLAGS = -lineinfo -O3 -std=c++11 -ccbin=$(CXX) -gencode arch=compute_75,code=sm_75 -Xcompiler -qopenmp -Xptxas="-v"

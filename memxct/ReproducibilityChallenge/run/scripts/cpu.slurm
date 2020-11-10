@@ -31,7 +31,7 @@ echo "--- CDS1: 1 node ---"
 mpirun -print-rank-map -ppn 1 -np 1 ../../bin/memxct-cpu
 
 # CDS2
-source vars.cds2.sh
+source vars/cds2.sh
 echo ""
 echo "--- CDS2: 4 nodes ---"
 mpirun -print-rank-map -ppn 1 -np 4 ../../bin/memxct-cpu
@@ -45,7 +45,7 @@ echo "--- CDS2: 1 node ---"
 mpirun -print-rank-map -ppn 1 -np 1 ../../bin/memxct-cpu
 
 # CDS3
-source vars.cds3.sh
+source vars/cds3.sh
 echo ""
 echo "--- CDS3: 4 nodes ---"
 mpirun -print-rank-map -ppn 1 -np 4 ../../bin/memxct-cpu

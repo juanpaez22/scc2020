@@ -1,14 +1,5 @@
 #!/bin/bash
 
-#SBATCH -J gpu-prepare
-#SBATCH -o ../output/gpu-prepare.o%j
-#SBATCH -e ../output/gpu-prepare.e%j
-#SBATCH -p gpu
-#SBATCH -t 00:30:00
-
-# -N and -n set by bash script
-
-# Source libraries
 source /data/compilers/intel20u2/compilers_and_libraries/linux/bin/compilervars.sh intel64
 source /data/compilers/intel20u2/impi/2019.8.254/intel64/bin/mpivars.sh
 source /data/compilers/intel20u2/mkl/bin/mklvars.sh intel64
@@ -32,6 +23,4 @@ rm -f /tmp/${CUDA_REPO_PKG}
 
 sudo yum -y install cuda-drivers
 sudo yum -y install cuda
-
-# Now can call gpu code from other sbatch
 

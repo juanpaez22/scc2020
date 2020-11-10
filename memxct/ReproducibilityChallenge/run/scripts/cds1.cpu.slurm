@@ -41,5 +41,5 @@ source /data/compilers/intel20u2/compilers_and_libraries/linux/bin/compilervars.
 source /data/compilers/intel20u2/impi/2019.8.254/intel64/bin/mpivars.sh
 source /data/compilers/intel20u2/mkl/bin/mklvars.sh intel64
 
-mpirun -print-rank-map -ppn 1 -np $1 ../../bin/memxct-cpu
+#mpirun -print-rank-map -ppn 1 -np $1 ../../bin/memxct-cpu
 

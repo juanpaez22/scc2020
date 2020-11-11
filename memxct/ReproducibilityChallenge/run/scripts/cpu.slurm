@@ -5,8 +5,8 @@
 #SBATCH -e ../output/memxct-cpu.e%j
 #SBATCH -p hpc
 #SBATCH -t 01:00:00
-#SBATCH -N 4
-#SBATCH -n 176
+#SBATCH -N 1
+#SBATCH -n 44
 
 export OMP_NUM_THREADS=22
 
@@ -17,16 +17,16 @@ source /data/compilers/intel20u2/mkl/bin/mklvars.sh intel64
 
 # For each dataset, source its files and do mpiruns
 
-MAX_PROCS=8
+MAX_PROCS=1
 
 # CDS1
-source vars/cds1.sh cpu
-for (( n=1; n<=$MAX_PROCS; n*=2 ))
-do
-	echo ""
-	echo "--- CDS1: $n procs ---"
-	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
-done
+#source vars/cds1.sh cpu
+#for (( n=1; n<=$MAX_PROCS; n*=2 ))
+#do
+#	echo ""
+#	echo "--- CDS1: $n procs ---"
+#	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
+#done
 
 
 # CDS2
@@ -40,12 +40,12 @@ done
 
 
 # CDS3
-source vars/cds3.sh cpu
-for (( n=1; n<=$MAX_PROCS; n*=2 ))
-do
-	echo ""
-	echo "--- CDS3: $n procs ---"
-	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
-
-done
+#source vars/cds3.sh cpu
+#for (( n=1; n<=$MAX_PROCS; n*=2 ))
+#do
+#	echo ""
+#	echo "--- CDS3: $n procs ---"
+#	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
+#
+#done
 

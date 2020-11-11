@@ -13,11 +13,11 @@ then
 	export SPATSIZE=64
 	export SPECSIZE=64
 
-	export PROJBLOCK=128
-	export BACKBLOCK=128
+	export PROJBLOCK=64
+	export BACKBLOCK=64
 	
-	export PROJBUFF=64
-	export BACKBUFF=64
+	export PROJBUFF=32
+	export BACKBUFF=32
 
 # CPU tuning
 else
@@ -25,8 +25,8 @@ else
 	export SPATSIZE=32
 	export SPECSIZE=32
 
-	export PROJBLOCK=64
-	export BACKBLOCK=64
+	export PROJBLOCK=512
+	export BACKBLOCK=512
 
 	export PROJBUFF=48
 	export BACKBUFF=48

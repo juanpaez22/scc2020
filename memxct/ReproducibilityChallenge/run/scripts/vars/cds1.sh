@@ -25,8 +25,8 @@ else
 	export SPATSIZE=32
 	export SPECSIZE=32
 
-	export PROJBLOCK=256
-	export BACKBLOCK=256
+	export PROJBLOCK=512
+	export BACKBLOCK=512
 
 	export PROJBUFF=48
 	export BACKBUFF=48

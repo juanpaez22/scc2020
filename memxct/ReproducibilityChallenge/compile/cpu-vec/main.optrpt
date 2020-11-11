@@ -101,7 +101,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(354,5)
 LOOP END
 
 LOOP BEGIN at ../src/cpu/main.cpp(452,3)
-   remark #15521: loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(471,5)
       remark #15523: loop was not vectorized: loop control variable k was found, but loop iteration count cannot be computed before executing the loop
@@ -826,7 +826,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(956,5)
    LOOP END
 LOOP END
 
-LOOP BEGIN at ../src/cpu/main.cpp(972,27)
+LOOP BEGIN at ../src/cpu/main.cpp(971,25)
    remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(960,5)
@@ -1025,7 +1025,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(354,5)
 LOOP END
 
 LOOP BEGIN at ../src/cpu/main.cpp(452,3)
-   remark #15521: loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(471,5)
       remark #15523: loop was not vectorized: loop control variable k was found, but loop iteration count cannot be computed before executing the loop
@@ -1764,7 +1764,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(956,5)
    LOOP END
 LOOP END
 
-LOOP BEGIN at ../src/cpu/main.cpp(972,27)
+LOOP BEGIN at ../src/cpu/main.cpp(971,25)
    remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(960,5)
@@ -1955,7 +1955,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(354,5)
 LOOP END
 
 LOOP BEGIN at ../src/cpu/main.cpp(452,3)
-   remark #15521: loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(471,5)
       remark #15523: loop was not vectorized: loop control variable k was found, but loop iteration count cannot be computed before executing the loop
@@ -2675,7 +2675,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(956,5)
    LOOP END
 LOOP END
 
-LOOP BEGIN at ../src/cpu/main.cpp(972,27)
+LOOP BEGIN at ../src/cpu/main.cpp(971,25)
    remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(960,5)
@@ -2870,7 +2870,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(354,5)
 LOOP END
 
 LOOP BEGIN at ../src/cpu/main.cpp(452,3)
-   remark #15521: loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(471,5)
       remark #15523: loop was not vectorized: loop control variable k was found, but loop iteration count cannot be computed before executing the loop
@@ -3589,7 +3589,7 @@ LOOP BEGIN at ../src/cpu/main.cpp(956,5)
    LOOP END
 LOOP END
 
-LOOP BEGIN at ../src/cpu/main.cpp(972,27)
+LOOP BEGIN at ../src/cpu/main.cpp(971,25)
    remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
 
    LOOP BEGIN at ../src/cpu/main.cpp(960,5)

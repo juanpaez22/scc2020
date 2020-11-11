@@ -7,17 +7,7 @@ CXXFLAGS = -std=c++11 -qopenmp -O3 -axCORE-AVX512,AVX2
 CXXFLAGS += -qopt-report=2 -qopt-report-phase=vec
 
 NVCC = nvcc
-NVCCFLAGS = -lineinfo -O3 -std=c++11 -ccbin=$(CXX) #-gencodearch=compute_50,code=sm_50 # -Xcompiler -qopenmp -Xptxas="-v"
-
-# Compatibility arch flags
-NVCCFLAGS += -arch=sm_52 \ 
--gencode=arch=compute_52,code=sm_52 \ 
--gencode=arch=compute_60,code=sm_60 \ 
--gencode=arch=compute_61,code=sm_61 \ 
--gencode=arch=compute_70,code=sm_70 \ 
--gencode=arch=compute_75,code=sm_75 \
--gencode=arch=compute_80,code=sm_80 \
--gencode=arch=compute_80,code=compute_80
+NVCCFLAGS = -lineinfo -O3 -std=c++11 -ccbin=$(CXX) -gencode arch=compute_60,code=sm_60 -Xcompiler -qopenmp -Xptxas="-v"
 
 LD_FLAGS = -qopenmp
 GPU_LD_FLAGS = -qopenmp -L/usr/local/cuda-11.1/lib64 -lcudart
@@ -32,9 +22,6 @@ GPU_SRC_P = ../src/gpu
 # OBJECTS
 CPU_OBJS = $(CPU_SRC_P)/main.o $(CPU_SRC_P)/raytrace.o $(CPU_SRC_P)/kernels.o
 GPU_OBJS = $(GPU_SRC_P)/main.o $(GPU_SRC_P)/raytrace.o $(GPU_SRC_P)/kernels.o
-
-# CUDA include
-#CUDA_INCL=/usr/local/cuda-11.1/targets/x86_64-linux/include
 
 # ----- Make Rules -----
 

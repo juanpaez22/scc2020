@@ -8,7 +8,7 @@
 #SBATCH -N 4
 #SBATCH -n 176
 
-export OMP_NUM_THREADS=44
+export OMP_NUM_THREADS=22
 
 # Source libraries
 source /data/compilers/intel20u2/compilers_and_libraries/linux/bin/compilervars.sh intel64
@@ -17,44 +17,35 @@ source /data/compilers/intel20u2/mkl/bin/mklvars.sh intel64
 
 # For each dataset, source its files and do mpiruns
 
+MAX_PROCS=8
+
 # CDS1
-source vars/cds1.sh
-echo "--- CDS1: 4 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 4 ../../bin/memxct-cpu
+source vars/cds1.sh cpu
+for (( n=1; n<=$MAX_PROCS; n*=2 ))
+do
+	echo ""
+	echo "--- CDS1: $n procs ---"
+	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
+done
 
-echo ""
-echo "--- CDS1: 2 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 2 ../../bin/memxct-cpu
-
-echo ""
-echo "--- CDS1: 1 node ---"
-mpirun -print-rank-map -ppn 1 -np 1 ../../bin/memxct-cpu
 
 # CDS2
-source vars/cds2.sh
-echo ""
-echo "--- CDS2: 4 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 4 ../../bin/memxct-cpu
+source vars/cds2.sh cpu
+for (( n=1; n<=$MAX_PROCS; n*=2 ))
+do
+	echo ""
+	echo "--- CDS2: $n procs ---"
+	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
+done
 
-echo ""
-echo "--- CDS2: 2 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 2 ../../bin/memxct-cpu
-
-echo ""
-echo "--- CDS2: 1 node ---"
-mpirun -print-rank-map -ppn 1 -np 1 ../../bin/memxct-cpu
 
 # CDS3
-source vars/cds3.sh
-echo ""
-echo "--- CDS3: 4 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 4 ../../bin/memxct-cpu
+source vars/cds3.sh cpu
+for (( n=1; n<=$MAX_PROCS; n*=2 ))
+do
+	echo ""
+	echo "--- CDS3: $n procs ---"
+	mpirun -print-rank-map -ppn 2 -np $n ../../bin/memxct-cpu
 
-echo ""
-echo "--- CDS3: 2 nodes ---"
-mpirun -print-rank-map -ppn 1 -np 2 ../../bin/memxct-cpu
-
-echo ""
-echo "--- CDS3: 1 node ---"
-mpirun -print-rank-map -ppn 1 -np 1 ../../bin/memxct-cpu
+done
 

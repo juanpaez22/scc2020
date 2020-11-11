@@ -25,11 +25,11 @@ else
 	export SPATSIZE=32
 	export SPECSIZE=32
 
-	export PROJBLOCK=64
-	export BACKBLOCK=64
+	export PROJBLOCK=256
+	export BACKBLOCK=256
 
-	export PROJBUFF=96
-	export BACKBUFF=96
+	export PROJBUFF=48
+	export BACKBUFF=48
 fi
 
 #I/O FILES

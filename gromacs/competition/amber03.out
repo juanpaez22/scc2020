@@ -1,0 +1,73 @@
+Loaded plugins: fastestmirror, langpacks, nvidia
+Loading mirror speeds from cached hostfile
+ * base: mirror.arizona.edu
+ * epel: pubmirror1.math.uh.edu
+ * extras: ftpmirror.your.org
+ * updates: mirrors.raystedman.org
+Package pdsh-2.31-1.el7.x86_64 already installed and latest version
+Nothing to do
+10.0.0.21: Loaded plugins: fastestmirror, langpacks, nvidia
+10.0.0.21: Loading mirror speeds from cached hostfile
+10.0.0.21:  * base: mirror.arizona.edu
+10.0.0.21:  * epel: pubmirror1.math.uh.edu
+10.0.0.21:  * extras: ftpmirror.your.org
+10.0.0.21:  * updates: mirrors.raystedman.org
+10.0.0.21: Package epel-release-7-12.noarch already installed and latest version
+10.0.0.21: Nothing to do
+10.0.0.21: Loaded plugins: fastestmirror, langpacks, nvidia
+10.0.0.21: Loading mirror speeds from cached hostfile
+10.0.0.21:  * base: mirror.arizona.edu
+10.0.0.21:  * epel: dfw.mirror.rackspace.com
+10.0.0.21:  * extras: ftpmirror.your.org
+10.0.0.21:  * updates: mirrors.raystedman.org
+10.0.0.21: Package htop-2.2.0-3.el7.x86_64 already installed and latest version
+10.0.0.21: Nothing to do
+10.0.0.21: Retrieving https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+10.0.0.21: Preparing...                          ########################################
+10.0.0.21: Loaded plugins: fastestmirror, langpacks, nvidia
+10.0.0.21: Loading mirror speeds from cached hostfile
+10.0.0.21:  * base: mirror.arizona.edu
+10.0.0.21:  * epel: dfw.mirror.rackspace.com
+10.0.0.21:  * extras: ftpmirror.your.org
+10.0.0.21:  * updates: mirrors.raystedman.org
+10.0.0.21: Package dkms-2.8.3-2.el7.noarch already installed and latest version
+10.0.0.21: Nothing to do
+10.0.0.21: Preparing...                          ########################################
+10.0.0.21: Loaded plugins: fastestmirror, langpacks, nvidia
+10.0.0.21: Loading mirror speeds from cached hostfile
+10.0.0.21:  * base: mirror.arizona.edu
+10.0.0.21:  * epel: dfw.mirror.rackspace.com
+10.0.0.21:  * extras: ftpmirror.your.org
+10.0.0.21:  * updates: mirrors.raystedman.org
+10.0.0.21: Package cuda-drivers-455.32.00-1.x86_64 already installed and latest version
+10.0.0.21: Nothing to do
+10.0.0.21: Loaded plugins: fastestmirror, langpacks, nvidia
+10.0.0.21: Loading mirror speeds from cached hostfile
+10.0.0.21:  * base: mirror.arizona.edu
+10.0.0.21:  * epel: pubmirror1.math.uh.edu
+10.0.0.21:  * extras: ftpmirror.your.org
+10.0.0.21:  * updates: mirrors.raystedman.org
+10.0.0.21: Package cuda-11.1.1-1.x86_64 already installed and latest version
+10.0.0.21: Nothing to do
+Starting job!
+/opt/intel/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpirun
+/data/ccuser/libraries/gromacs_gpu/gromacs-2020.4/build/bin/gmx_mpi
+turning H bonds into constraints...
+turning H bonds into constraints...
+turning H bonds into constraints...
+turning H bonds into constraints...
+turning H bonds into constraints...
+turning H bonds into constraints...
+Analysing residue names:
+There are:   442    Protein residues
+There are:    21        Ion residues
+There are: 200844      Water residues
+Analysing Protein...
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+Determining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 303.15 K
+Calculated rlist for 1x1 atom pair-list as 1.406 nm, buffer size 0.206 nm
+Set rlist, assuming 4x4 atom pair-list, to 1.288 nm, buffer size 0.088 nm
+Note that mdrun will redetermine rlist based on the actual pair-list setup
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 160x160x160, spacing 0.115 0.115 0.115
+Completed job!

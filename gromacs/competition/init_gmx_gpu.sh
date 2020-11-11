@@ -19,6 +19,7 @@ sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
 rm -f /tmp/${CUDA_REPO_PKG}
 
+# sudo yum -y install mesa-libGL.x86_64 mesa-libEGL.x86_64
 sudo yum -y install cuda-drivers
 sudo yum -y install cuda
 

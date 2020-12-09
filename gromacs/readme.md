@@ -91,6 +91,8 @@ Another: https://www.youtube.com/watch?v=iaPZHzd1nzs&ab_channel=BioExcelCenterof
   - Task 3 involved temperature replica exchange simulations. Many points were awarded for the preparation and the -replex 100 simulations, so I only did those.
 - Tips for future competitions
   - Always use GPU's if you can. Limit to 1 GPU per 1-2 ranks (add more ranks before adding more GPUs).
+  - Test your networking ahead of time! Bad networking WILL be a bottleneck in your simulations (our GPU queues had terrible bandwidth, so we had to use CPU queues instead)
+  - Compile both GPU and CPU versions of Gromacs just in case
   - If using a single node, use only one rank and many OMP/threadMPI threads to avoid the network altogether.
   - Familiarize yourself with the parameters in .mdp files, as well as the purpose of all kinds of inputs/outputs (.itp, .top, .tpr, .edr, .gro, etc...). Getting these wrong, or not specifying the right flags, can and will cause errors (note Gromacs 2020 uses -r in grompp to specify restraints-- this is not mentioned in the tutorials)
   - Maximize points/(time and cost). Know when to stop and dedicate resources to other applications.
